@@ -8,15 +8,15 @@ AboutGenerator 是一款独立制作的 Windows「关于本机」界面生成器
 
 ## 与原版演示的素材区别
 
-这份公开版**不包含，也不依赖**下列原版演示所用素材：
+这份公开版不包含下列原版演示所用素材：
 
-| 原版演示素材 | 原版用途 | 公开版替代方式 |
+| 原版演示素材 | 原版用途 | 替代方式 |
 | --- | --- | --- |
 | `ui/fonts/SF-Pro-Text-*.otf`、`ui/fonts/PingFangSC-*.woff2` | 英文和中文字体 | Windows 系统字体 |
 | `ui/assets/AppleStatusBar.svg`、`ui/assets/status-*.svg` | 从 Apple 设计资源取得的状态栏图形 | CSS 绘制的通用状态图标与文字 |
 | `ui/assets/iphone-18-pro-max-silver.png` | 手机预览边框图片 | CSS 绘制的简化边框 |
 
-要得到原版演示的视觉效果，需要上述素材；它们**未随本仓库提供**。请先确认你对相关素材具有适用于目标平台、用途及分发方式的授权。公开版无需这些文件也能运行，预览和导出功能均可使用。原版截图和个人设备信息也未包含在本仓库中。
+要得到原版演示的视觉效果，需要上述素材（含素材的版本可在发行页面获取）。请先确认你对相关素材具有适用于目标平台、用途及分发方式的授权。公开版无需这些文件也能运行，预览和导出功能均可使用。原版截图和个人设备信息也未包含在本仓库中。
 
 素材使用限制请查阅 [Apple 字体资料](https://developer.apple.com/documentation/technologyoverviews/fonts)和 [Apple 设计资源许可](https://developer.apple.com/support/downloads/terms/apple-design-resources/Apple-Design-Resources-License-20230621-English.pdf)。README 中的说明不构成对这些素材的再授权。
 
