@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AboutGenerator · 关于本机生成器</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+</head>
+<body>
+  <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  </svg>
+  <canvas id="liquid-canvas" aria-hidden="true"></canvas>
+
+  <div class="app-shell">
+    <header class="main-header drag-zone">
+      <div class="traffic-lights">
+        <button class="traffic close" id="window-close" aria-label="关闭"></button>
+        <button class="traffic minimize" id="window-minimize" aria-label="最小化"></button>
+        <button class="traffic maximize" id="window-maximize" aria-label="最大化"></button>
+      </div>
+      <h1>AboutGenerator</h1>
+      <button class="reset-button" id="header-reset">恢复默认</button>
+    </header>
+
+    <main class="body-grid">
+      <section class="preview-pane" aria-label="iPhone 预览">
+        <div class="device-stage" id="device-stage">
+          <div class="device-center">
+            <div class="phone-device" id="phone-device">
+              <div class="phone-screen-crop" id="phone-screen-crop">
+                <iframe id="phone-frame" title="iPhone 关于本机预览" src="phone.html"></iframe>
+              </div>
+            </div>
+            <button class="capture-button" id="capture-button" data-liquid data-liquid-kind="pill" title="只截取手机画面">
+              <svg><use href="#i-camera"/></svg><span>截屏</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="inspector" aria-label="设备信息编辑">
+        <div class="inspector-heading"><h2>设备信息</h2></div>
+        <div class="inspector-scroll">
+          <section class="inspector-section">
+            <h3>基本信息</h3>
+            <label>名称<input data-field="name" value="iPhone"></label>
+            <label>iOS 版本<input data-field="iosVersion" value="27.0"></label>
+            <label>iOS 安装日期<input data-field="iosInstalledDate" type="date"></label>
+            <label>型号名称<input data-field="modelName" value="iPhone 16 Pro Max"></label>
+            <label>型号<input data-field="modelNumber" value="XXXXXXCH/A"></label>
+            <label>序列号<input data-field="serial" value="XXXXXXXXXX"></label>
+            <label>保修状态<select data-field="warrantyStatus"><option value="limited">有限保修</option><option value="notApplicable">保障不适用</option></select></label>
+            <label id="warranty-expiry-field">保修截止日期<input data-field="warrantyExpiry" type="date"></label>
+          </section>
+          <section class="inspector-section">
+            <h3>运营商信息</h3>
+            <label>网络名称<input data-field="carrierNetwork" spellcheck="false"></label>
+            <label>运营商及版本<input data-field="carrierVersion" spellcheck="false"></label>
+            <label>运营商锁<input data-field="carrierLock" spellcheck="false"></label>
+          </section>
+          <section class="inspector-section">
+            <h3>内容与容量</h3>
+            <div class="field-grid">
+              <label>歌曲<input data-field="songs" value="0"></label>
+              <label>视频<input data-field="videos" value="589"></label>
+              <label>照片<input data-field="photos" value="1,763"></label>
+              <label>应用程序<input data-field="apps" value="113"></label>
+              <label>总容量<input data-field="capacity" value="256 GB"></label>
+              <label>可用容量<input data-field="available" value="37.45 GB"></label>
+            </div>
+          </section>
+          <section class="inspector-section">
+            <div class="section-heading"><h3>设备标识</h3><button id="regenerate-inline">重新生成</button></div>
+            <label>无线局域网地址<input data-field="wifi" spellcheck="false"></label>
+            <label>蓝牙地址<input data-field="bluetooth" spellcheck="false"></label>
+            <label>调制解调器固件<input data-field="modem" spellcheck="false"></label>
+            <label>IMEI<input data-field="imei" spellcheck="false"></label>
+            <label>IMEI 2<input data-field="imei2" spellcheck="false"></label>
+            <label>ICCID<input data-field="iccid" spellcheck="false"></label>
+            <label>SEID<input data-field="seid" spellcheck="false"></label>
+          </section>
+        </div>
+        <div class="inspector-footer">
+          <button class="developer-link" id="developer-info" aria-haspopup="dialog" aria-controls="developer-dialog">
+            <span>关于开发者</span><span class="developer-link-name">XiaoJimiao</span><span class="developer-chevron" aria-hidden="true">›</span>
+          </button>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <div class="magnifier" id="liquid-magnifier" data-liquid data-liquid-kind="magnifier"
+       role="img" aria-label="可拖动的玻璃放大镜，由XiaoJimiao开发" title="拖动放大镜">
+    <span class="magnifier-handle" aria-hidden="true"><span class="magnifier-credit">由XiaoJimiao开发</span></span>
+    <span class="magnifier-glass" aria-hidden="true"></span>
+  </div>
+
+  <div class="toast" id="toast" role="status"><span id="toast-text"></span></div>
+  <dialog class="developer-dialog" id="developer-dialog" aria-labelledby="developer-dialog-title">
+    <div class="developer-dialog-head">
+      <h2 id="developer-dialog-title" tabindex="-1">关于开发者</h2>
+      <button class="developer-close" id="developer-close" aria-label="关闭关于开发者">×</button>
+    </div>
+    <p class="developer-name">XiaoJimiao</p>
+    <p class="developer-description">邮箱：yhx0509@hotmail.com</p>
+    <section class="developer-legal" aria-labelledby="developer-legal-title">
+      <h3 id="developer-legal-title">法律声明</h3>
+      <p>AboutGenerator 由 XiaoJimiao 独立开发，是非官方界面演示工具，与 Apple Inc. 无隶属、合作或赞助关系，亦不代表获得 Apple Inc. 认可。Apple、iPhone 是 Apple Inc. 的商标；其他商标归各自权利人所有。软件中的模拟画面及数据仅供演示与娱乐，不代表真实设备信息或 Apple 官方内容。</p>
+    </section>
+  </dialog>
+  <script src="liquid.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
