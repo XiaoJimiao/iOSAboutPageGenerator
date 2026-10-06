@@ -20,4 +20,6 @@ AboutGenerator 是一款iOS关于本机界面生成器。你可以编辑预览�
 
 ## 效果
 
+此版本效果使用了包含完整素材的版本生成
+
 <img width="990" height="2151" alt="Snapshot-iPhone-18-Pro-Max" src="https://github.com/user-attachments/assets/7746574f-1e2f-427d-92ae-f391c39659db" />
