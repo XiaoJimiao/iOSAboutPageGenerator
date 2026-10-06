@@ -1,3 +1,4 @@
+<img width="1320" height="2868" alt="Snapshot-iPhone-18-Pro-Max" src="https://github.com/user-attachments/assets/7746574f-1e2f-427d-92ae-f391c39659db" />
 # AboutGenerator
 
 AboutGenerator 是一款iOS关于本机界面生成器。你可以编辑预览中的设备信息、滚动页面，并将预览画面保存为 PNG。
